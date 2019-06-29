@@ -1,0 +1,16 @@
+{
+	"appSecret": "b84ca2ed26c6fd5d938b518eb2326f18",
+	"pageAccessToken": "EAAFZCgaZAYbMQBAOymzpgUSSHf3kn0I1ZCBdWBwLZCDmBVZAv5ccIvRSHMBZAEWLsH4Pifv2TW6HmGEKIjufPzMHZB2rYkkHcgKZAmSYiw1xDjGpI5oFRN2OBvO21dBZA1eWeGhvxRN1fbus4mKgDfnbMxJ03UqOlGUspCEzUWv83hbnGvJL6dyd5C7KNGdlf7mgZD",
+	"validationToken": "verify-token-sonha",
+	"serverURL": "https://api2vn.herokuapp.com/",	
+	"mongoUrl": "mongodb://Lien-BTC:%2BZ%5D6n.)LAzkdR-%3D-@35.240.175.168:27017/?authMechanism=SCRAM-SHA-1&authSource=Nosa&connectTimeoutMS=30000&maxIdleTimeMS=600000",
+	"databasename":"sonha",
+	"databasenamenosa":"Nosa",
+	"zaloAccessToken":"",
+	"zaloOaId":"",
+	"zaloOaSecret":"",
+	"zaloCallbackUrl":"",
+	"aws-id": "AKIAJJCFN5UGUS5LOQVQ",
+	"aws-secret-key": "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",
+	"aws-path":"son-ha"
+}
