@@ -38,10 +38,6 @@ $('#iDprovencial').change((event) =>
 $('#idNameTeam').change((event) =>
 {
       $('#iDprovencial').css({"display":""})
-    setTimeout(function(){
-      $('#iDprovencial').css({"display":"none"})
-
-    }, 5000);
 
     let NameID =event.target.value;
     idTeam=NameID;
