@@ -4,15 +4,102 @@ let CurenProv;
 let psid;
 let Done;
 let Tema=[];
-
+let idTeam;
+let Teamsss=[];
+let Temalenfht=[];
+let kq;
 $(document).ready(function(){
 GetProvincialByName()
+GetprovincialByNameContent()
+getteam()
 });
+
+function GetprovincialByNameContent()
+{
+  $('#iDprovencial')[0].innerHTML =`<option value="0">Tất cả các tỉnh</option>`
+    $.ajax({
+    url:"GetProvincialByName",
+    type:"GET",
+    success:function(retsult)
+    {
+      retsult.forEach(Provincial => {
+                $('#iDprovencial')[0].innerHTML += `<option value=\'${Provincial.Name}\'>${Provincial.Name}</option>`;
+
+              });
+    }
+})
+}
+
+$('#iDprovencial').change((event) =>
+{
+    let Namepoin =event.target.value;
+    Getpoirn(Namepoin)
+})
+$('#idNameTeam').change((event) =>
+{
+      $('#iDprovencial').css({"display":""})
+    setTimeout(function(){
+      $('#iDprovencial').css({"display":"none"})
+
+    }, 3000);
+
+    let NameID =event.target.value;
+    idTeam=NameID;
+    console.log(idTeam)
+})
+
+function getteam()
+{
+  $.ajax({
+    type: 'GET',
+    url:'GetTeam',
+    success: (results) => {
+      results.forEach((x)=>
+      {
+        $('#idNameTeam')[0].innerHTML+=`<option id="NameTeam" value=\'${x._id}\'>${x.Name}</option>`
+      })
+    }
+  });
+}
+
+function Getpoirn(idoripoin) {
+  let url = '/GetPoins?provId='+encodeURIComponent(idoripoin);
+  $.ajax({
+    type: 'GET',
+    url: url,
+    success: (results) => {
+      console.log(results)
+      console.log(idTeam)
+      results.forEach((data)=>
+      {
+        if(data.TeamId==idTeam)
+        {
+          Teamsss.push(data)
+        }
+
+      })
+         console.log(Teamsss)
+         Teamsss.forEach((x)=>
+         {
+          if(x.TeamPsid)
+          {
+            Temalenfht.push(x.TeamPsid)
+          }
+         })
+        kq=(Number(Temalenfht.length)*100)/ Number(Teamsss.length);
+         console.log(kq)
+         $('#Teameid')[0].innerHTML=`${String(kq).substring(0,2)}%`
+
+
+    }
+  });
+}
+
 
 
 function GetProvincialByName()
 {
-	$('#Provincial')[0].innerHTML='<option value="0">Vui lòng chọn tỉnh</option> <option  value="all" >Tất cả các tỉnh</option>';
+	$('#Provincial')[0].innerHTML='<option value="0">Vui lòng chọn tỉnh</option>';
 	$.ajax({
 		url:"GetProvincialByName",
 		type:"GET",
@@ -41,10 +128,10 @@ $('#Provincial').change((event) => {
 	$('#spinnner').css({"display":""})
     $('#datatableBTC').css({"display":"none"})
 	Getlist(CurenProv)
-	 if(CurenProv=="all")
-		  {
-		  	Getlistall()
-		  }
+	 // if(CurenProv=="all")
+		//   {
+		//   	Getlistall()
+		//   }
 });
 
 function Getlist(CurenProv) {
@@ -61,18 +148,18 @@ function Getlist(CurenProv) {
   });
 }
 
-function Getlistall() {
-  $.ajax({
-    type: 'GET',
-    url:'/GetBTClistByNames',
-    success: (results) => {
-    	console.log(results)
-    	$('#spinnner').css({"display":"none"})
-    	$('#datatableBTC').css({"display":""})
-      	draw(document.getElementById('datatableBTC'),results)
-    }
-  });
-}
+// function Getlistall() {
+//   $.ajax({
+//     type: 'GET',
+//     url:'/GetBTClistByNames',
+//     success: (results) => {
+//     	console.log(results)
+//     	$('#spinnner').css({"display":"none"})
+//     	$('#datatableBTC').css({"display":""})
+//       	draw(document.getElementById('datatableBTC'),results)
+//     }
+//   });
+// }
 let table = null;
 function draw(grvResultCuren,data){  
     ///grvResultCuren.a

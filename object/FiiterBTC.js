@@ -91,10 +91,10 @@ module.exports = {
 		      /////callback('Test Memebers '+query);
 		    });
 		  },
-		  GetBtcContent: function (pipeline, callback) {
+		  GetPoin: function (pipeline, callback) {
 		    objDb.getConnection(function (client) {
 		      const db = client.db(DATA_BASE_NOSA);
-		      collection = db.collection('BTCContent');
+		      collection = db.collection('BTCPoint');
 		      // Find some documents
 		      collection.aggregate(pipeline).sort({
 		        "_id": 1
@@ -116,7 +116,7 @@ module.exports = {
 		  GetTeam: function (query, callback) {
 		    objDb.getConnection(function (client) {
 		      const db = client.db(DATA_BASE_NOSA);
-		      collection = db.collection('BTCContent');
+		      collection = db.collection('Team');
 		      // Find some documents
 		      collection.find(query).sort({
 		        "_id": 1

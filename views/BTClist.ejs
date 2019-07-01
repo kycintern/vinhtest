@@ -196,20 +196,7 @@
             </div>
           </div>
 
-     <div class="row">
-       <div class="col-lg-12">
-          <div class="card">
-            <div class="card-body collapse show">
-                <h4 class="card-title">Tiến độ chấm</h4>
-                       <label>Ban</label>
-                        <select id="Team" class="form-control custom-select">
-                          <option value="0">Tất cả các Ban</option>
-                        </select>
-            </div>
-          </div>
-        </div>
-     </div>
-  
+
 
 
     <div id="member-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -276,6 +263,32 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+       <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body collapse show">
+                <h4 class="card-title">Tiến độ chấm</h4>
+                       <label>Theo tỉnh và ban</label><br>
+                          <select id="idNameTeam" style="width: 300px" class="form-control custom-select">
+                          <option value="0" id="NameTeam">vui lòng chọn ban</option>
+                        </select>
+                        <select id="iDprovencial"  style="width: 300px;display: none;" class="form-control custom-select">
+                          <option value="0">vui lòng chọn tỉnh</option>
+                        </select>
+                     
+                     <!--    <div id="NameTeam" style="padding: 10px;font-family: sans-serif;">
+                          
+                        </div> -->
+                        <div id="Teameid" style="padding:10px;font-family: sans-serif;font-size: 30px">
+                        </div>
+
+
+            </div>
+          </div>
+        </div>
+     </div>
+  
                
           <!-- ============================================================== -->
           <!-- Right sidebar -->

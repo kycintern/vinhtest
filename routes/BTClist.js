@@ -137,26 +137,47 @@ router.get('/MemberByid',function(req,res)
 	})
 })
 
-
-router.get('/GetBtcContent',function(req,res)
+router.get('/GetPoins',function(req,res)
 {
-		let id=req.query.id;
-     let match={
-     	$match:{
-     			TeamId:id
-     	}
-     }
-	let lookup={$lookup: {
-                    from:'BTCPoint',
-                    localField:'TeamId',
-                    foreignField:'TeamId',
-                    as: 'BtcContent'
-                }};
- 
-	FiiterBTC.GetBtcContent([match,lookup],function(ret)
-	{
-		res.send(ret)
-	})
+    let provId=req.query.provId;
+    let match={
+        $match:{
+            Provincial:provId,
+        }
+    }
+    FiiterBTC.GetPoin([match],function(ret)
+    {
+        res.send(ret)
+    })
 })
+
+router.get('/GetTeam',function(req,res)
+{
+    let query={}
+    FiiterBTC.GetTeam(query,function(ret){
+    res.send(ret)
+    })
+
+})
+// router.get('/GetBtcContent',function(req,res)
+// {
+// 		let id=req.query.id;
+//      let match={
+//      	$match:{
+//      			TeamId:id
+//      	}
+//      }
+// 	let lookup={$lookup: {
+//                     from:'BTCPoint',
+//                     localField:'TeamId',
+//                     foreignField:'TeamId',
+//                     as: 'BtcContent'
+//                 }};
+ 
+// 	FiiterBTC.GetBtcContent([match,lookup],function(ret)
+// 	{
+// 		res.send(ret)
+// 	})
+// })
 
 module.exports=router;
