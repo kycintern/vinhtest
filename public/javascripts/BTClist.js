@@ -41,7 +41,7 @@ $('#idNameTeam').change((event) =>
 
     let NameID =event.target.value;
     idTeam=NameID;
-    console.log(idTeam)
+ 
 })
 
 function getteam()
@@ -64,8 +64,6 @@ function Getpoirn(idoripoin) {
     type: 'GET',
     url: url,
     success: (results) => {
-      console.log(results)
-      console.log(idTeam)
       results.forEach((data)=>
       {
         if(data.TeamId==idTeam)
@@ -74,7 +72,6 @@ function Getpoirn(idoripoin) {
         }
 
       })
-         console.log(Teamsss)
          Teamsss.forEach((x)=>
          {
           if(x.TeamPsid)
@@ -83,7 +80,6 @@ function Getpoirn(idoripoin) {
           }
          })
         kq=(Number(Temalenfht.length)*100)/ Number(Teamsss.length);
-         console.log(kq)
          $('#Teameid')[0].innerHTML=`${String(kq).substring(0,2)}%`
 
 
@@ -216,7 +212,6 @@ function GetproofByName(psid)
 		type:'GET',
 		success:function(ret)
 		{
-			console.log(ret)
 			$('#spinesssr').css({"display":"none"})
 			$('#datatablesfoof').css({"display":""})
 			draw2(document.getElementById('datatablesfoof'),ret)
